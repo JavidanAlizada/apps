@@ -1,0 +1,11 @@
+1.Proyekt 2 hisseden ibaretdir: Library ve Client
+2.Test merhelesi http requestler Client terefde gedir ve Client terefde Library-nin gore bileceyi butun ishlerin testi aparilir
+3.POST requestde -> 4 main thread acilir. XML, JSON, CSV, TXT formatda storage handle etmek ucun. en son hansi thread 
+ishini gorub bitirirse POST requestde https status created ve default JSON formasinda response qayidir.
+4.GET requestde -> type daxil edilerse hemin type ucun get request gedir ve 1 threadde , eger verilmezse onda yene 4 thread
+acilir heresi oz tipini oxuyur hansi daha tez oxuyub bitirse digerlerinin ishini deadlock eliyir ve response ni dondurur.
+5.folderler main folder -> klass adinda folder ->types based -> ve post olunan her bir fayl shekilinde saxlanilir.
+6.her bir post sorgu ucun yeni bir fayl yaradilir. update ishlemi bir fayl uzerinde gedir.
+7.Post request olunanda obyektin fieldlerinin her biri adinda byFieldName deye file yaranir obyekti query etmek ucun.
+bu fayl meselen user obyekti ucun byRegisteredDate ola biler ve users/user1/user1_data ve user1_query shekilinde saxlanilir.
+8.Complex querys ilkin variantda yer almir.

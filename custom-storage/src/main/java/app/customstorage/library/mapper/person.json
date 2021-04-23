@@ -1,0 +1,21 @@
+{
+  "id": 1,
+  "type_id": "INTEGER",
+  "name": "Javidan",
+  "type_name": "STRING",
+  "surname": "Alizada",
+  "type_surname": "STRING",
+  "hobbies": [
+    "AA",
+    "BB",
+    "CC"
+  ],
+  "type_hobbies": "ARRAY",
+  "country": {
+    "country_name": "Azerbaijan",
+    "type_country_name": "STRING",
+    "city": "Baku",
+    "type_city": "STRING"
+  },
+  "type_country": "OBJECT"
+}

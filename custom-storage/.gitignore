@@ -31,3 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+.mvn
+.idea
+mvnw.cmd
+HELP.md
+custom-storage.iml
+.gitignore
