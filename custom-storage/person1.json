@@ -1,0 +1,18 @@
+{
+  "id":  1,
+  "type_id": "int",
+  "username":  "Javidan",
+  "type_username": "String",
+  "weight":  78.23,
+  "type_weight": "float",
+  "isActive":  true,
+  "type_isActive": "boolean",
+  "hobbies":  ["Reading", "Writing", 1, true],
+  "type_hobbies": "List",
+  "positionAndSalary":  {
+	"isTrue":  true,
+	"number":  100,
+	"ad":  "alizada"
+  },
+  "type_positionAndSalary": "Map"
+}
