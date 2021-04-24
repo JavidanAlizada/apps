@@ -1,12 +1,13 @@
 package app.customstorage.library.mapper;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-//@Component
 public class Pojo2JsonConverter<Type> {
 
     public String generateJson(Type type) {
-        System.out.println(type);
         StringBuilder json = new StringBuilder("");
         if (type == null)
             return "";
@@ -18,11 +19,14 @@ public class Pojo2JsonConverter<Type> {
                 String fieldName = field.getName();
                 String fieldType = formatFieldType(field.getType().getName());
                 Object fieldValue = field.get(type);
+                fieldValue = fieldType.equals("List") ? makeListBodyInJson((ArrayList<Object>) fieldValue) : fieldValue;
+                fieldValue = fieldType.equals("Map") ? makeMapBodyInJson((Map<String, Object>) fieldValue) : fieldValue;
                 field.setAccessible(false);
-//                System.out.println("fieldName: " + fieldName + "\nfieldType: " + fieldType + "\nfieldValue: " + fieldValue);
                 json.append(makeJsonBody(fieldName, fieldType, fieldValue));
+
             }
-            System.out.println(json.append("}"));
+            json.replace(json.length() - 1, json.length(), "");
+            return json.append("\n}").toString();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -30,8 +34,8 @@ public class Pojo2JsonConverter<Type> {
     }
 
     private String formatFieldType(String fieldType) {
-        String[] fieldTypeSplit = fieldType.contains(".") ? fieldType.split("\\.") : new String[]{};
-        return fieldTypeSplit.length > 0 ? fieldTypeSplit[fieldTypeSplit.length - 1] : fieldType;
+        String[] fieldTypeSplit = fieldType.split("\\.");
+        return fieldTypeSplit[fieldTypeSplit.length - 1];
     }
 
     public StringBuilder makeJsonBody(Object... args) {
@@ -40,8 +44,34 @@ public class Pojo2JsonConverter<Type> {
         args[2] = !args[1].equals("String") ? args[2] : "\"" + args[2] + "\"";
         jsonBody.append(":  " + args[2] + ",");
         jsonBody.append("\n  \"type_" + args[0] + "\"");
-        jsonBody.append(":  " + args[1] + ",\n");
+        jsonBody.append(": \"" + args[1] + "\",");
         return jsonBody;
+    }
+
+    private List<Object> makeListBodyInJson(ArrayList<Object> listValue) {
+        List<Object> list = new ArrayList<>();
+        for (Object o : listValue) {
+            if (o instanceof String) {
+                list.add("\"" + o + "\"");
+            } else
+                list.add(o);
+        }
+        return list;
+    }
+
+    private String makeMapBodyInJson(Map<String, Object> mapValue) {
+        StringBuilder resultMap = new StringBuilder();
+        resultMap.append("{");
+        for (Map.Entry<String, Object> mapVal : mapValue.entrySet()) {
+            resultMap.append("\n\t\"" + mapVal.getKey() + "\":  ");
+            if (mapVal.getValue() instanceof String)
+                resultMap.append("\"" + mapVal.getValue() + "\",");
+            else
+                resultMap.append("" + mapVal.getValue() + ",");
+        }
+        resultMap.replace(resultMap.length() - 1, resultMap.length(), "");
+        resultMap.append("\n  }");
+        return resultMap.toString();
     }
 
 

@@ -24,7 +24,6 @@ public class JSONFileHandler<Type> implements FileHandler<Type> {
     public boolean writeFile(String fileName, Type type) {
         boolean isFileReady = false;
         try {
-            System.out.println(type);
             String content = jsonConverter.generateJson(type);
             System.out.println(content);
             writer(content, fileName);
