@@ -11,7 +11,8 @@ public class User extends Object {
     private int id;
     private String username;
     private float weight;
-    private boolean isActive;
     private List<Object> hobbies;
     private Map<String, Object> positionAndSalary;
+    private boolean isActive;
+
 }

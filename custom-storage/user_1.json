@@ -1,0 +1,12 @@
+{
+  "id":  1,
+  "username":  "Ja	vidan",
+  "weight":  78.23,
+  "hobbies":  ["Reading", "Writing", 1, true],
+  "positionAndSalary":  {
+	"isTrue":  true,
+	"number":  100,
+	"ad":  "alizada"
+  },
+  "isActive":  false
+}

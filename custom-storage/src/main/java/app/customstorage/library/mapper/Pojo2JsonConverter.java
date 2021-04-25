@@ -38,13 +38,11 @@ public class Pojo2JsonConverter<Type> {
         return fieldTypeSplit[fieldTypeSplit.length - 1];
     }
 
-    public StringBuilder makeJsonBody(Object... args) {
+    private StringBuilder makeJsonBody(Object... args) {
         StringBuilder jsonBody = new StringBuilder();
         jsonBody.append("\n  \"" + args[0] + "\"");
         args[2] = !args[1].equals("String") ? args[2] : "\"" + args[2] + "\"";
         jsonBody.append(":  " + args[2] + ",");
-        jsonBody.append("\n  \"type_" + args[0] + "\"");
-        jsonBody.append(": \"" + args[1] + "\",");
         return jsonBody;
     }
 
@@ -73,6 +71,4 @@ public class Pojo2JsonConverter<Type> {
         resultMap.append("\n  }");
         return resultMap.toString();
     }
-
-
 }
