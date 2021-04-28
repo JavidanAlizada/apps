@@ -1,7 +1,6 @@
 package app.customstorage;
 
 import app.customstorage.client.entity.User;
-import app.customstorage.library.io.types.JSONFileHandler;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -11,16 +10,16 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) {
-        long a =  System.currentTimeMillis();
-        User user = createUser();
-        JSONFileHandler<User> fileHandler = new JSONFileHandler<>();
-//        Pojo2JSON
-        fileHandler.writeFile(user);
-//        File2POJO
-        System.out.println(System.currentTimeMillis() - a);
-        long b =  System.currentTimeMillis();
-        User userRead = fileHandler.readFile("user_1.json", new User());
-        System.out.println(System.currentTimeMillis() - b);
+//        long a = System.currentTimeMillis();
+//        User user = createUser();
+//        JSONFileHandler<User> fileHandler = new JSONFileHandler<>();
+////        Pojo2JSON
+//        fileHandler.writeFile(user);
+////        File2POJO
+//        System.out.println(System.currentTimeMillis() - a);
+//        long b = System.currentTimeMillis();
+//        User userRead = fileHandler.readFile("user_1.json", new User());
+//        System.out.println(System.currentTimeMillis() - b);
     }
 
     private static User createUser() {
@@ -34,10 +33,15 @@ public class Main {
         hobbies.add(true);
         user.setHobbies(hobbies);
         user.setWeight(78.23f);
+        Map<String, Object> keyva = new LinkedHashMap<>();
+        keyva.put("isTrue", true);
+        keyva.put("number", 100);
+        keyva.put("ad", "alizada");
         Map<String, Object> keyv = new LinkedHashMap<>();
         keyv.put("isTrue", true);
         keyv.put("number", 100);
         keyv.put("ad", "alizada");
+        keyv.put("mapper", keyva);
         user.setPositionAndSalary(keyv);
         user.setActive(false);
         return user;

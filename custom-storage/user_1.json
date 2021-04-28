@@ -6,7 +6,8 @@
   "positionAndSalary":  {
 	"isTrue":  true,
 	"number":  100,
-	"ad":  "alizada"
+	"ad":  "alizada",
+	"mapper":  {isTrue=true, number=100, ad=alizada}
   },
   "isActive":  false
 }

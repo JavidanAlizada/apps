@@ -57,7 +57,6 @@ public class File2PojoConverter<Type> {
             String[] splittedByComma = byComma.split(":");
             for (int k = 1; k < splittedByComma.length; k++) {
                 String byColon = splittedByComma[k];
-//                System.out.println("byColon: " + byColon.trim());
                 String formattedKey = splittedByComma[0].replace("\"", "").trim();
                 Object formatValue = splittedByComma[1];
                 if (byColon.equals("list"))
